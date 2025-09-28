@@ -2,22 +2,14 @@ import java.util.Scanner;
 
 public class ZooManagement {
     public static void main(String[] args) {
-        int nbrCages=20;
-        String zooName="my zoo";
-        System.out.println(zooName+" comporte "+nbrCages+" cages");
-        Scanner obj = new Scanner(System.in);
+        Animal fennec =new Animal("labib",2,true,"canidés");
+        Animal chacal =new Animal("kalila",4,true,"canidés");
+        Animal taureau =new Animal("chatraba",4,true,"bovidés");
+        Zoo myzoo= new Zoo("belvedere","tunis",20);
 
-        do {// Create a Scanner object
-            System.out.println("saisir le nom du zoo");
-            zooName=obj.nextLine();
-        }while (zooName.isEmpty());
-
-
-        do {  // Create a Scanner object
-            System.out.println("saisir le nombre des cages");
-            nbrCages=obj.nextInt();
-        }while (nbrCages<0);
-
-        System.out.println(zooName+" comporte "+nbrCages+" cages");
+        myzoo.displayZoo();
+        System.out.println(myzoo) ;
+        System.out.println(myzoo.toString());
+        System.out.println(fennec);
     }
 }
