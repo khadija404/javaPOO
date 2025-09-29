@@ -1,8 +1,10 @@
-import java.util.Scanner;
+package tn.esprit.gestionzoo.main;
+
+import tn.esprit.gestionzoo.entities.*;
 
 public class ZooManagement {
     public static void main(String[] args) {
-        Animal fennec =new Animal("labib",2,true,"canidés");
+        Animal fennec =new Animal("labib",-1,true,"canidés");
         Animal chacal =new Animal("kalila",4,true,"canidés");
         Animal taureau =new Animal("chatraba",4,true,"bovidés");
         Zoo myzoo= new Zoo("belvedere","tunis");
