@@ -16,7 +16,7 @@ public class Zoo {
     }
 
     public void setName(String name) {
-        if(name==null){
+        if(name.trim().isEmpty()){
             System.out.println("le nom du zoo ne peut pas etre vide");
         }
         this.name = name;
