@@ -7,21 +7,26 @@ public class Zoo {
     private Aquatic[] aquaticAnimals=new Aquatic[MAX_AQUATIC];
     private String name;
     private String city;
-    private static final int NBRCAGES=25;
+    private  int nbcages=2;
     private int compteur=0;
     private int compteurAquatic = 0;
 
 
 
     public Zoo(){}
-    public  Zoo(String name,String city){
+    public  Zoo(String name,String city,int nbcages){
         this.name=name;
         this.city=city;
-        animals=new Animal[NBRCAGES];
+        this.nbcages=nbcages;
+        animals=new Animal[nbcages];
     }
 
     public int getCompteurAquatic() {
         return compteurAquatic;
+    }
+
+    public int getCompteur() {
+        return compteur;
     }
 
     public Aquatic[] getAquaticAnimals() {
@@ -36,7 +41,7 @@ public class Zoo {
     }
 
     public void displayZoo(){
-        System.out.println("le nom du zoo:"+name+" la ville:"+city+" nombre de cages:"+NBRCAGES);
+        System.out.println("le nom du zoo:"+name+" la ville:"+city+" nombre de cages:"+nbcages);
     }
     public void displayAnilmals(){
         for (int i = 0; i <compteur ; i++) {
@@ -50,17 +55,21 @@ public class Zoo {
         return "Zoo{" +
                 "name='" + name + '\'' +
                 ", city='" + city + '\'' +
-                ", nbrCages=" + NBRCAGES +
+                ", nbrCages=" + nbcages +
                 '}';
     }
 
-    public boolean addAnimal(Animal animal){
-        if(!isZooFull() && searchAnimal(animal)==-1){
+    public void addAnimal(Animal animal) throws Exception {
+
+        if(isZooFull() && searchAnimal(animal)!=-1){
+            throw new ZooFullException("Le zoo est plein, impossible d’ajouter un nouvel animal");
+        } else if (animal.getAge()<0) {
+            throw new InvalidAgeException("Âge d’animal invalide : l’âge ne peut pas être négatif");
+        } else{
             this.animals[compteur]=animal;
             compteur++;
-            return true;
         }
-        return false;
+
     }
     public int searchAnimal(Animal animal){
         for (int i = 0; i < compteur; i++) {
@@ -83,7 +92,7 @@ public class Zoo {
         return false;
     }
     public boolean isZooFull(){
-        if(compteur<NBRCAGES){
+        if(compteur<nbcages){
             return false;
         }
         return true;

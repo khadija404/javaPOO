@@ -19,6 +19,10 @@ public class Animal {
         return name;
     }
 
+    public int getAge() {
+        return age;
+    }
+
     public void setAge(int age) {
         if(age<=0){
             System.out.println("l'age ne peut pas etre negative");
