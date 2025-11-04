@@ -4,6 +4,10 @@ public class Dolphin extends Aquatic{
     private float swimmingSpeed;
     public Dolphin() {}
 
+    public float getSwimmingSpeed() {
+        return swimmingSpeed;
+    }
+
     public Dolphin(String name, int age, boolean isMammal, String family, String habitat, float swimmingSpeed) {
         super(name, age, isMammal, family, habitat);
         this.swimmingSpeed = swimmingSpeed;

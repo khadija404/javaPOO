@@ -4,19 +4,23 @@ import tn.esprit.gestionzoo.entities.*;
 
 public class ZooManagement {
     public static void main(String[] args) {
-        Aquatic frog=new Aquatic("tod",1,false,"amphibian","bogs");
-        Terrestrial rat=new Terrestrial("remy",1,true,"Muridae",4);
-        Dolphin dolphin=new Dolphin("dodo",2,true,"delphinidae","oceans",35);
-        Penguin penguin=new Penguin("emperror penguin",5,false,"Spheniscidae","snow",300);
+        Zoo myZoo = new Zoo("Friguia", "Hammamet");
 
-        System.out.println(frog);
-        System.out.println(rat);
-        System.out.println(dolphin);
-        System.out.println(penguin);
+        Aquatic dolphin = new Dolphin("Flipper", 6, true, "Delphinidae", "Océan", 25.5f);
+        Aquatic penguin = new Penguin("Pingu", 3, false, "Spheniscidae", "Antarctique", 20.0f);
+        Aquatic penguin2 = new Penguin("Pingu", 3, false, "Spheniscidae", "Antarctique", 25.0f);
 
-        frog.swim();
-        dolphin.swim();
-        penguin.swim();
+        myZoo.addAquaticAnimal(dolphin);
+        myZoo.addAquaticAnimal(penguin);
+        myZoo.addAquaticAnimal(penguin2);
+
+        for (int i = 0; i <myZoo.getCompteurAquatic() ; i++) {
+            myZoo.getAquaticAnimals()[i].swim();
+        }
+        System.out.println(myZoo.getMaxPenguinDepth());
+        myZoo.displayNumberOfAquaticByType();
+
+
     }
 
 }
