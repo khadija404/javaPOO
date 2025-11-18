@@ -1,38 +1,39 @@
+import java.util.HashSet;
 import java.util.List;
 
 public class main {
     public static void main(String[] args) {
-        SocieteArrayList societe = new SocieteArrayList();
+        Departement d1=new Departement(1,"dep",11);
+        Departement d2=new Departement(2,"adep",12);
+        Departement d3=new Departement(3,"dep",12);
+        Departement d4=new Departement(4,"dep",14);
+        Departement d5=new Departement(5,"random",16);
 
-        Employe e1 = new Employe(1, "Bejja", "Sarra", "Informatique", 3);
-        Employe e2 = new Employe(2, "Khaled", "Ali", "Marketing", 2);
-        Employe e3 = new Employe(3, "Ben Salah", "Nour", "Informatique", 4);
-        Employe e4 = new Employe(4, "Trabelsi", "Yasmine", "RH", 1);
+        DepartementHashSet deps=new DepartementHashSet();
+        deps.ajouterDepartement(d1);
+        deps.ajouterDepartement(d2);
+        deps.ajouterDepartement(d3);
+        deps.ajouterDepartement(d4);
 
-        societe.ajouterEmploye(e1);
-        societe.ajouterEmploye(e2);
-        societe.ajouterEmploye(e3);
-        societe.ajouterEmploye(e4);
+        System.out.println(deps.rechercherDepartement("zzz"));
+        System.out.println(deps.rechercherDepartement("dep5"));
 
-        societe.displayEmploye();
+        System.out.println(deps.rechercherDepartement(d1));
+        System.out.println(deps.rechercherDepartement(d5));
 
-        System.out.println("\n Recherche par nom 'Bejja' : " + societe.rechercherEmploye("Bejja"));
-        System.out.println(" Recherche par objet e2 : " + societe.rechercherEmploye(e2));
+        deps.ajouterDepartement(d5);
+        deps.afficherDepartements();
+        deps.supprimerDepartement(d5);
+        System.out.println("-----------------------");
+        deps.afficherDepartements();
 
-        societe.supprimerEmploye(e2);
-        societe.displayEmploye();
 
-        societe.trierEmployeParId();
-        societe.displayEmploye();
+        System.out.println("-----------------------");
+        System.out.println(deps.trierDepartementsParId());
 
-        societe.trierEmployeParNom();
-        societe.displayEmploye();
 
-        System.out.println("\n Employés du département 'Informatique' :");
-        List<Employe> informatique = societe.rechercherParDepartement("Informatique");
-        for (Employe e : informatique) {
-            System.out.println(e);
-        }
+        System.out.println("-----------------------");
+        System.out.println(deps.trierDepartementsParNomEtNombreEmployes());
     }
 
 
