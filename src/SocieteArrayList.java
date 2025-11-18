@@ -1,0 +1,76 @@
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
+import java.util.List;
+
+public class SocieteArrayList  implements IGestion<Employe>, IRechercheAvancee<Employe>{
+    private List<Employe> employes;
+    public SocieteArrayList() {
+        employes = new ArrayList<>();
+    }
+
+    @Override
+    public void ajouterEmploye(Employe e) {
+        employes.add(e);
+        System.out.println("Employé ajouté : " + e.getNom());
+    }
+
+    @Override
+    public boolean rechercherEmploye(String nom) {
+        for (Employe e : employes) {
+            if (e.getNom().equalsIgnoreCase(nom)) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    @Override
+    public boolean rechercherEmploye(Employe e) {
+        return employes.contains(e);
+    }
+
+    @Override
+    public void supprimerEmploye(Employe e) {
+        if (employes.remove(e)) {
+            System.out.println(" Employé supprimé : " + e.getNom());
+        } else {
+            System.out.println("Employé introuvable !");
+        }
+    }
+
+    @Override
+    public void displayEmploye() {
+        System.out.println("\n Liste des employés :");
+        for (Employe e : employes) {
+            System.out.println(e);
+        }
+    }
+
+    @Override
+    public void trierEmployeParId() {
+        Collections.sort(employes);
+        System.out.println("\n Employés triés par ID (ordre naturel).");
+    }
+
+    @Override
+    public void trierEmployeParNom() {
+        Collections.sort(employes, Comparator
+                .comparing(Employe::getNomDepartement)
+                .thenComparing(Employe::getGrade)
+                .thenComparing(Employe::getNom)
+        );
+        System.out.println("\n Employés triés par département, grade et nom.");
+    }
+
+    @Override
+    public List<Employe> rechercherParDepartement(String nomDepartement) {
+        List<Employe> result = new ArrayList<>();
+        for (Employe e : employes) {
+            if (e.getNomDepartement().equalsIgnoreCase(nomDepartement)) {
+                result.add(e);
+            }
+        }
+        return result;
+    }
+}
